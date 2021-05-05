@@ -33,7 +33,7 @@ function App() {
       }
       getCryptoData()
     }
-  }, [userRequest])
+  }, [userRequest.currency])
 
   return (
     <Container>
