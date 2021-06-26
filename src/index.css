@@ -18,11 +18,11 @@ body {
   color: white;
 }
 .resultado p {
-  font-size: 18px!important;
+  font-size: 18px !important;
 }
 .resultado p span {
   font-weight: bold;
 }
-p.precio{
-  font-size: 30px!important;
+p.precio {
+  font-size: 30px !important;
 }

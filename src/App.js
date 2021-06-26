@@ -1,6 +1,10 @@
-import {useState,useEffect} from "react"
+import { useState, useEffect } from "react"
 import axios from "axios"
-import {Container,BackgroundImage,Heading} from "./components/theme/App-theme"
+import {
+  Container,
+  BackgroundImage,
+  Heading,
+} from "./components/theme/App-theme"
 
 import image from "./assets/cryptomonedas.png"
 import Form from "./components/Form"
@@ -8,21 +12,20 @@ import CryptoValue from "./components/CryptoValue"
 import Spinner from "./components/Spinner"
 
 function App() {
-
   const [userRequest, setUserRequest] = useState({
-    currency:"",
-    crypto:""
+    currency: "",
+    crypto: "",
   })
   const [cryptoData, setCryptoData] = useState({})
   const [showSpinner, setShowSpinner] = useState(false)
 
-  const {currency,crypto} = userRequest
+  const { currency, crypto } = userRequest
 
   useEffect(() => {
-    if(currency && crypto) {
+    if (currency && crypto) {
       setShowSpinner(true)
       const getCryptoData = async () => {
-        const URL = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${crypto}&tsyms=${currency}`;
+        const URL = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${crypto}&tsyms=${currency}`
         try {
           const data = await axios.get(URL)
           setShowSpinner(false)
@@ -33,38 +36,23 @@ function App() {
       }
       getCryptoData()
     }
-  }, [currency,crypto])
+  }, [currency, crypto])
 
   return (
     <Container>
-          <div>
-              <BackgroundImage 
-                src={image}
-                alt="imagen de cripto monedas"
-              />
-          </div>
+      <div>
+        <BackgroundImage src={image} alt="imagen de cripto monedas" />
+      </div>
 
-          <div>
-              <Heading>
-                Cotiza Criptomonedas al Instante
-              </Heading>
+      <div>
+        <Heading>Cotiza Criptomonedas al Instante</Heading>
 
-              <Form 
-                setUserRequest={setUserRequest}
-              />
+        <Form setUserRequest={setUserRequest} />
 
-              {
-                showSpinner
-                ?
-                <Spinner />
-                :
-                <CryptoValue 
-                  cryptoData={cryptoData}
-                />
-              }
-          </div>
+        {showSpinner ? <Spinner /> : <CryptoValue cryptoData={cryptoData} />}
+      </div>
     </Container>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -1,15 +1,15 @@
-import React from 'react'
+import React from "react"
 import "./theme/Spinner.css"
 
 export default function Spinner() {
-    return (
-        <div className="sk-chase">
-            <div className="sk-chase-dot"></div>
-            <div className="sk-chase-dot"></div>
-            <div className="sk-chase-dot"></div>
-            <div className="sk-chase-dot"></div>
-            <div className="sk-chase-dot"></div>
-            <div className="sk-chase-dot"></div>
-        </div>
-    )
+  return (
+    <div className="sk-chase">
+      <div className="sk-chase-dot"></div>
+      <div className="sk-chase-dot"></div>
+      <div className="sk-chase-dot"></div>
+      <div className="sk-chase-dot"></div>
+      <div className="sk-chase-dot"></div>
+      <div className="sk-chase-dot"></div>
+    </div>
+  )
 }
