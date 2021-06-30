@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import axios from "axios"
+
 import { Button, Label, Select } from "./theme/Form-theme"
 
 import Currencies from "../data/countriesCurrencies"
@@ -10,6 +11,20 @@ export default function Form({ setUserRequest }) {
   const [cryptos, setCryptos] = useState([])
   const [values, setValues] = useState({})
   const [error, setError] = useState(false)
+
+  useEffect(() => {
+    const getCrypto = async () => {
+      const URL =
+        "https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD"
+      try {
+        const data = await axios.get(URL)
+        setCryptos(data.data.Data)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    getCrypto()
+  }, [])
 
   const handleChange = (e) => {
     setValues({
@@ -28,20 +43,6 @@ export default function Form({ setUserRequest }) {
 
     setUserRequest(values)
   }
-
-  useEffect(() => {
-    const getCrypto = async () => {
-      const URL =
-        "https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD"
-      try {
-        const data = await axios.get(URL)
-        setCryptos(data.data.Data)
-      } catch (error) {
-        console.error(error)
-      }
-    }
-    getCrypto()
-  }, [])
 
   return (
     <form onSubmit={handleSubmit}>

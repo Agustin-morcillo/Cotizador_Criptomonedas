@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
+
+import image from "./assets/cryptomonedas.png"
 import {
   Container,
   BackgroundImage,
   Heading,
 } from "./components/theme/App-theme"
 
-import image from "./assets/cryptomonedas.png"
 import Form from "./components/Form"
-import CryptoValue from "./components/CryptoValue"
 import Spinner from "./components/Spinner"
+import CryptoValue from "./components/CryptoValue"
 
 function App() {
   const [userRequest, setUserRequest] = useState({

@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+
 import { Container, Information, Price } from "./theme/CryptoValue-theme"
 
 export default function CryptoPrice({ cryptoData }) {
